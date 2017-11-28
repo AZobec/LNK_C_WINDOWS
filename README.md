@@ -5,6 +5,8 @@ I have seen a propagation technique used by vjw0rm to propagate himself, by crea
 
 So I decided to see if it was possible in C, create a LNK and modify the attributes of this kind of file.
 
+I coded this POC under Visual Studio, and debugging in x64.
+
 #### Links ####
 Thanks to [https://www.codeproject.com/Articles/11467/How-to-create-short-cuts-link-files] . I modified and debugged his sourcecode for C
 
