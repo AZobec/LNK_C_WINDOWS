@@ -22,7 +22,7 @@ Thanks to [https://www.codeproject.com/Articles/11467/How-to-create-short-cuts-l
 [https://msdn.microsoft.com/en-us/library/windows/desktop/ms680573(v=vs.85).aspx]
 
 
-#### Functions ####
+#### Functions and docs ####
 [https://msdn.microsoft.com/en-us/library/bb776891(VS.85).aspx] ==> Shell Links
 
 [https://msdn.microsoft.com/en-us/library/ms678543(v=vs.85).aspx] ==> CoInitialise Function
