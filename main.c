@@ -28,61 +28,48 @@ HRESULT CreateShortCut(LPCWSTR pszTargetfile, LPCWSTR pszTargetargs,
 	HRESULT       hRes;                  /* Returned COM result code */
 	IShellLink*   pShellLink;            /* IShellLink object pointer */
 	IPersistFile* pPersistFile;          /* IPersistFile object pointer */
-	int           iWideCharsWritten;     /* Number of wide characters
-										 written */
+	int           iWideCharsWritten;     /* Number of wide characters written */
 
 	CoInitialize(NULL);
-
 
 	hRes = E_INVALIDARG;
 	if ((pszTargetfile != NULL) && (strlen(pszTargetfile) > 0))
 	{
 		hRes = CoCreateInstance(
-			&CLSID_ShellLink,     /* pre-defined CLSID of the IShellLink
-								  object */
-								  NULL,                 /* pointer to parent interface if part of
-														aggregate */
-														CLSCTX_INPROC_SERVER, /* caller and called code are in same
-																			  process */
-																			  &IID_IShellLink,      /* pre-defined interface of the
-																									IShellLink object */
-																									&pShellLink);         /* Returns a pointer to the IShellLink
-																														  object */
+			&CLSID_ShellLink,     /* pre-defined CLSID of the IShellLink object */
+			NULL,                /* pointer to parent interface if part of aggregate */
+			CLSCTX_INPROC_SERVER, /* caller and called code are in same process */
+			&IID_IShellLink,      /* pre-defined interface of theIShellLink object */
+			&pShellLink);         /* Returns a pointer to the IShellLink object */
+
 		if (SUCCEEDED(hRes))
 		{
 			/* Set the fields in the IShellLink object */
-			hRes = pShellLink->lpVtbl->SetPath(pShellLink,
-				pszTargetfile);
-			hRes = pShellLink->lpVtbl->SetArguments(pShellLink,
-				pszTargetargs);
+			hRes = pShellLink->lpVtbl->SetPath(pShellLink,pszTargetfile);
+			hRes = pShellLink->lpVtbl->SetArguments(pShellLink,pszTargetargs);
 			if (pszDescription !=NULL && strlen(pszDescription) > 0)
 			{
-				hRes = pShellLink->lpVtbl->SetDescription(pShellLink,
-					pszDescription);
+				hRes = pShellLink->lpVtbl->SetDescription(pShellLink,pszDescription);
 			}
 			if (iShowmode > 0)
 			{
-				hRes = pShellLink->lpVtbl->SetShowCmd(pShellLink,
-					iShowmode);
+				hRes = pShellLink->lpVtbl->SetShowCmd(pShellLink,iShowmode);
 			}
 			if (pszCurdir != NULL && strlen(pszCurdir) > 0)
 			{
-				hRes = pShellLink->lpVtbl->SetWorkingDirectory(pShellLink,
-					pszCurdir);
+				hRes = pShellLink->lpVtbl->SetWorkingDirectory(pShellLink,pszCurdir);
 			}
 			if (pszIconfile != NULL && strlen(pszIconfile) > 0 && iIconindex >= 0)
 			{
-				hRes = pShellLink->lpVtbl->SetIconLocation(pShellLink,
-					pszIconfile, iIconindex);
+				hRes = pShellLink->lpVtbl->SetIconLocation(pShellLink,pszIconfile, iIconindex);
 			}
 
 			/* Use the IPersistFile object to save the shell link */
 			hRes = pShellLink->lpVtbl->QueryInterface(
 				pShellLink,                /* existing IShellLink object */
-				&IID_IPersistFile,         /* pre-defined interface of the
-										   IPersistFile object */
-										   &pPersistFile);            /* returns a pointer to the
-																	  IPersistFile object */
+				&IID_IPersistFile,         /* pre-defined interface of the IPersistFile object */
+				&pPersistFile);            /* returns a pointer to the IPersistFile object */
+
 			if (SUCCEEDED(hRes))
 			{
 				/* We save the IPersistFile object to a file (the Path given in argument, in LPCWSTR) */
@@ -91,7 +78,6 @@ HRESULT CreateShortCut(LPCWSTR pszTargetfile, LPCWSTR pszTargetargs,
 			}
 			pShellLink->lpVtbl->Release(pShellLink);
 		}
-
 	}
 	return (hRes);
 }
