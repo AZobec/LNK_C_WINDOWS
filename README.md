@@ -1,3 +1,10 @@
+## Main Goal ##
+My main goal by doing this is to understand does it really work, what is a COM Object, what is a Shell Link, what is really a LNK file, etc..
+
+I have seen a propagation technique used by vjw0rm to propagate himself, by creating LNK file in VBS, by executing a command when clicking on LNK.
+
+So I decided to see if it was possible in C, create a LNK and modify the attributes of this kind of file.
+
 #### Links ####
 Thanks to [https://www.codeproject.com/Articles/11467/How-to-create-short-cuts-link-files] . I modified and debugged his sourcecode for C
 
