@@ -1,5 +1,5 @@
 ## Main Goal ##
-My main goal by doing this is to understand does it really work, what is a COM Object, what is a Shell Link, what is really a LNK file, etc..
+My main goal by doing this is to understand how does it really work, what is a COM Object, what is a Shell Link, what is really a LNK file, etc..
 
 I have seen a propagation technique used by vjw0rm to propagate himself, by creating LNK file in VBS, by executing a command when clicking on LNK.
 
